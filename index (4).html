@@ -1,232 +1,248 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luna Botânica</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Bloom Botânica</title>
+   <link rel="stylesheet" href="style.css">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="172 Sem Título_20250812101342.png" alt="Logo Luna Botânica" class="img src">
-            <p class="tagline">a arte de florir emoções</p>
-        </div>
-        <nav>
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Buscar plantas e presentes...">
-                <button onclick="searchProduct()"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="user-area">
-                <a href="#" class="user-icon" id="login-button-icon" onclick="openLoginModal()">
-                    <i class="fas fa-user"></i>
-                </a>
-                <span id="welcome-message" style="display:none;"></span>
-                <a href="#" class="cart-icon" id="cart-icon">
-                    <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
-                </a>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <div id="message"></div>
+   <header>
+       <div class="logo-container">
+           <img src="/logo.png" alt="Logo Luna Botânica" class="img src">
+           <p class="tagline">a arte de florir emoções</p>
+       </div>
+       <nav>
+           <div class="search-box">
+               <input type="text" id="search-input" placeholder="Buscar plantas e presentes...">
+               <button onclick="searchProduct()"><i class="fas fa-search"></i></button>
+           </div>
+           <div class="user-area">
+               <a href="#" class="user-icon" id="login-button-icon" onclick="openLoginModal()">
+                   <i class="fas fa-user"></i>
+               </a>
+               <span id="welcome-message" style="display:none;"></span>
+               <a href="#" class="cart-icon" id="cart-icon">
+                   <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+               </a>
+           </div>
+       </nav>
+   </header>ssss
+   <main>
+       <div id="message"></div>
 
-        <div id="product-list" class="main-section">
 
-        </div>
+       <div id="product-list" class="main-section">
 
-        <section id="cart-section" class="cart-summary-area hidden main-section">
-            <h2>Seu Carrinho</h2>
-            <div id="cart-items-container">
 
-            </div>
-            <div class="cart-actions">
-                <button class="button-primary" id="clear-cart-btn">Limpar Carrinho</button>
-                <button class="button-primary" id="checkout-btn">Finalizar Compra</button>
-            </div>
-        </section>
+       </div>
 
-        <section id="checkout-section" class="checkout-area hidden main-section">
-            <h2>Finalizar Compra</h2>
-            <div class="checkout-summary">
-                <h3>Resumo do Pedido</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Produto</th>
-                            <th>Qtd</th>
-                            <th>Preço Unit.</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="checkout-items-table-body">
 
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3" class="text-right">Subtotal:</td>
-                            <td id="checkout-subtotal">R$ 0,00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="text-right">Desconto:</td>
-                            <td id="checkout-discount">R$ 0,00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="text-right total-final">Total a Pagar:</td>
-                            <td id="checkout-final-total" class="total-final">R$ 0,00</td>
-                        </tr>
-                    </tfoot>
-                </table>
+       <section id="cart-section" class="cart-summary-area hidden main-section">
+           <h2>Seu Carrinho</h2>
+           <div id="cart-items-container">
 
-                <div class="coupon-section">
-                    <label for="coupon-input">Tem um cupom?</label>
-                    <input type="text" id="coupon-input" placeholder="Digite seu cupom">
-                    <button class="button-secondary" id="apply-coupon-btn">Aplicar Cupom</button>
-                    <p id="coupon-message" class="error-message"></p>
-                </div>
 
-                <button class="button-primary confirm-purchase-btn">Ir para Pagamento</button>
-                <button class="button-secondary back-to-cart-btn">Voltar ao Carrinho</button>
-            </div>
-        </section>
+           </div>
+           <div class="cart-actions">
+               <button class="button-primary" id="clear-cart-btn">Limpar Carrinho</button>
+               <button class="button-primary" id="checkout-btn">Finalizar Compra</button>
+           </div>
+       </section>
 
-        <section id="payment-section" class="payment-area hidden main-section">
-            <h2>Pagamento</h2>
-            <div class="payment-methods">
-                <div class="payment-method active" data-method="pix">
-                    <i class="fas fa-qrcode"></i>
-                    <span>PIX</span>
-                </div>
-                <div class="payment-method" data-method="credit">
-                    <i class="far fa-credit-card"></i>
-                    <span>Cartão de Crédito</span>
-                </div>
-            </div>
-            
-            <div id="pix-payment" class="payment-details">
-                <h3>Pagamento via PIX</h3>
-                <div class="qr-code-container">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PIX123456789LUNAROSA" alt="QR Code PIX">
-                    <p>Escaneie o QR Code ou copie o código abaixo:</p>
-                    <div class="pix-code">
-                        <span>123e4567-e89b-12d3-a456-426614174000</span>
-                        <button class="copy-btn"><i class="far fa-copy"></i> Copiar</button>
-                    </div>
-                </div>
-                <div class="payment-instructions">
-                    <p><i class="fas fa-check-circle"></i> Seu pedido será confirmado automaticamente após o pagamento</p>
-                    <p><i class="fas fa-clock"></i> Prazo de confirmação: até 30 minutos</p>
-                </div>
-            </div>
-            
-            <div id="credit-payment" class="payment-details hidden">
-                <h3>Pagamento via Cartão de Crédito</h3>
-                <form id="credit-card-form">
-                    <div class="form-group">
-                        <label for="card-number">Número do Cartão</label>
-                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
-                    </div>
-                    <div class="form-group">
-                        <label for="card-name">Nome no Cartão</label>
-                        <input type="text" id="card-name" placeholder="Nome como está no cartão">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="card-expiry">Validade</label>
-                            <input type="text" id="card-expiry" placeholder="MM/AA">
-                        </div>
-                        <div class="form-group">
-                            <label for="card-cvv">CVV</label>
-                            <input type="text" id="card-cvv" placeholder="123">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-installments">Parcelamento</label>
-                        <select id="card-installments">
-                            <option value="1">1x de R$ 0,00 sem juros</option>
 
-                        </select>
-                    </div>
-                    <button type="submit" class="button-primary">Confirmar Pagamento</button>
-                </form>
-            </div>
-            
-            <button class="button-secondary back-to-checkout-btn">Voltar</button>
-        </section>
-    </main>
+       <section id="checkout-section" class="checkout-area hidden main-section">
+           <h2>Finalizar Compra</h2>
+           <div class="checkout-summary">
+               <h3>Resumo do Pedido</h3>
+               <table>
+                   <thead>
+                       <tr>
+                           <th>Produto</th>
+                           <th>Qtd</th>
+                           <th>Preço Unit.</th>
+                           <th>Total</th>
+                       </tr>
+                   </thead>
+                   <tbody id="checkout-items-table-body">
 
-    <footer>
-        <div class="footer-nav">
-            <button class="nav-btn" data-section="product-list">
-                <i class="fas fa-home"></i>
-                <span>Início</span>
-            </button>
-            <button class="nav-btn" data-section="product-list" data-category="plantas">
-                <i class="fas fa-leaf"></i>
-                <span>Plantas e Vasos</span>
-            </button>
-            <button class="nav-btn" data-section="product-list" data-category="arranjos">
-                <i class="fas fa-spa"></i>
-                <span>Arranjos</span>
-            </button>
-            <button class="nav-btn" data-section="product-list" data-category="presentes">
-                <i class="fas fa-gift"></i>
-                <span>Presentes</span>
-            </button>
-            <button class="nav-btn" id="profile-btn">
-                <i class="fas fa-user"></i>
-                <span>Perfil</span>
-            </button>
-        </div>
-        <div class="footer-info">
-            <p>&copy; 2025 Luna Botânica - Todos os direitos reservados.</p>
-            <p>Entre em contato: contato@lunabotanica.com</p>
-        </div>
-    </footer>
 
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeLoginModal()">&times;</span>
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" required>
-                <label for="password">Senha:</label>
-                <input type="password" id="password" required>
-                <button type="submit">Entrar</button>
-                <p id="login-message" class="error-message"></p>
-            </form>
-        </div>
-    </div>
+                   </tbody>
+                   <tfoot>
+                       <tr>
+                           <td colspan="3" class="text-right">Subtotal:</td>
+                           <td id="checkout-subtotal">R$ 0,00</td>
+                       </tr>
+                       <tr>
+                           <td colspan="3" class="text-right">Desconto:</td>
+                           <td id="checkout-discount">R$ 0,00</td>
+                       </tr>
+                       <tr>
+                           <td colspan="3" class="text-right total-final">Total a Pagar:</td>
+                           <td id="checkout-final-total" class="total-final">R$ 0,00</td>
+                       </tr>
+                   </tfoot>
+               </table>
 
-    <div id="profile-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeProfileModal()">&times;</span>
-            <h2>Meu Perfil</h2>
-            <form id="profile-form">
-                <div class="form-group">
-                    <label for="profile-name">Nome:</label>
-                    <input type="text" id="profile-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="profile-email">E-mail:</label>
-                    <input type="email" id="profile-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="profile-address">Endereço:</label>
-                    <input type="text" id="profile-address">
-                </div>
-                <div class="form-group">
-                    <label for="profile-phone">Telefone:</label>
-                    <input type="tel" id="profile-phone">
-                </div>
-                <button type="submit" class="button-primary">Salvar Alterações</button>
-            </form>
-        </div>
-    </div>
 
-    <script src="script.js"></script>
+               <div class="coupon-section">
+                   <label for="coupon-input">Tem um cupom?</label>
+                   <input type="text" id="coupon-input" placeholder="Digite seu cupom">
+                   <button class="button-secondary" id="apply-coupon-btn">Aplicar Cupom</button>
+                   <p id="coupon-message" class="error-message"></p>
+               </div>
+
+
+               <button class="button-primary confirm-purchase-btn">Ir para Pagamento</button>
+               <button class="button-secondary back-to-cart-btn">Voltar ao Carrinho</button>
+           </div>
+       </section>
+
+
+       <section id="payment-section" class="payment-area hidden main-section">
+           <h2>Pagamento</h2>
+           <div class="payment-methods">
+               <div class="payment-method active" data-method="pix">
+                   <i class="fas fa-qrcode"></i>
+                   <span>PIX</span>
+               </div>
+               <div class="payment-method" data-method="credit">
+                   <i class="far fa-credit-card"></i>
+                   <span>Cartão de Crédito</span>
+               </div>
+           </div>
+          
+           <div id="pix-payment" class="payment-details">
+               <h3>Pagamento via PIX</h3>
+               <div class="qr-code-container">
+                   <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PIX123456789LUNAROSA" alt="QR Code PIX">
+                   <p>Escaneie o QR Code ou copie o código abaixo:</p>
+                   <div class="pix-code">
+                       <span>123e4567-e89b-12d3-a456-426614174000</span>
+                       <button class="copy-btn"><i class="far fa-copy"></i> Copiar</button>
+                   </div>
+               </div>
+               <div class="payment-instructions">
+                   <p><i class="fas fa-check-circle"></i> Seu pedido será confirmado automaticamente após o pagamento</p>
+                   <p><i class="fas fa-clock"></i> Prazo de confirmação: até 30 minutos</p>
+               </div>
+           </div>
+          
+           <div id="credit-payment" class="payment-details hidden">
+               <h3>Pagamento via Cartão de Crédito</h3>
+               <form id="credit-card-form">
+                   <div class="form-group">
+                       <label for="card-number">Número do Cartão</label>
+                       <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                   </div>
+                   <div class="form-group">
+                       <label for="card-name">Nome no Cartão</label>
+                       <input type="text" id="card-name" placeholder="Nome como está no cartão">
+                   </div>
+                   <div class="form-row">
+                       <div class="form-group">
+                           <label for="card-expiry">Validade</label>
+                           <input type="text" id="card-expiry" placeholder="MM/AA">
+                       </div>
+                       <div class="form-group">
+                           <label for="card-cvv">CVV</label>
+                           <input type="text" id="card-cvv" placeholder="123">
+                       </div>
+                   </div>
+                   <div class="form-group">
+                       <label for="card-installments">Parcelamento</label>
+                       <select id="card-installments">
+                           <option value="1">1x de R$ 0,00 sem juros</option>
+
+
+                       </select>
+                   </div>
+                   <button type="submit" class="button-primary">Confirmar Pagamento</button>
+               </form>
+           </div>
+          
+           <button class="button-secondary back-to-checkout-btn">Voltar</button>
+       </section>
+   </main>
+
+
+   <footer>
+       <div class="footer-nav">
+           <button class="nav-btn" data-section="product-list">
+               <i class="fas fa-home"></i>
+               <span>Início</span>
+           </button>
+           <button class="nav-btn" data-section="product-list" data-category="plantas">
+               <i class="fas fa-leaf"></i>
+               <span>Plantas e Vasos</span>
+           </button>
+           <button class="nav-btn" data-section="product-list" data-category="arranjos">
+               <i class="fas fa-spa"></i>
+               <span>Arranjos</span>
+           </button>
+           <button class="nav-btn" data-section="product-list" data-category="presentes">
+               <i class="fas fa-gift"></i>
+               <span>Presentes</span>
+           </button>
+           <button class="nav-btn" id="profile-btn">
+               <i class="fas fa-user"></i>
+               <span>Perfil</span>
+           </button>
+       </div>
+       <div class="footer-info">
+           <p>&copy; 2025 Bloom Botânica - Todos os direitos reservados.</p>
+           <p>Entre em contato: contato@lbloombotanica.com</p>
+       </div>
+   </footer>
+
+
+   <div id="login-modal" class="modal">
+       <div class="modal-content">
+           <span class="close-button" onclick="closeLoginModal()">&times;</span>
+           <h2>Login</h2>
+           <form id="login-form">
+               <label for="email">E-mail:</label>
+               <input type="email" id="email" required>
+               <label for="password">Senha:</label>
+               <input type="password" id="password" required>
+               <button type="submit">Entrar</button>
+               <p id="login-message" class="error-message"></p>
+           </form>
+       </div>
+   </div>
+
+
+   <div id="profile-modal" class="modal">
+       <div class="modal-content">
+           <span class="close-button" onclick="closeProfileModal()">&times;</span>
+           <h2>Meu Perfil</h2>
+           <form id="profile-form">
+               <div class="form-group">
+                   <label for="profile-name">Nome:</label>
+                   <input type="text" id="profile-name" required>
+               </div>
+               <div class="form-group">
+                   <label for="profile-email">E-mail:</label>
+                   <input type="email" id="profile-email" required>
+               </div>
+               <div class="form-group">
+                   <label for="profile-address">Endereço:</label>
+                   <input type="text" id="profile-address">
+               </div>
+               <div class="form-group">
+                   <label for="profile-phone">Telefone:</label>
+                   <input type="tel" id="profile-phone">
+               </div>
+               <button type="submit" class="button-primary">Salvar Alterações</button>
+           </form>
+       </div>
+   </div>
+
+
+   <script src="script.js"></script>
 </body>
 </html>
+
+
